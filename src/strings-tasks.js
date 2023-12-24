@@ -500,8 +500,21 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const normalSequence = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const incryptedSequence =
+    'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+  let newstring = '';
+  let charIndex = 0;
+  for (let i = 0; i <= str.length - 1; i += 1) {
+    if (normalSequence.indexOf(str.charAt(i)) !== -1) {
+      charIndex = normalSequence.indexOf(str.charAt(i));
+      newstring = newstring.concat(incryptedSequence.charAt(charIndex));
+    } else {
+      newstring = newstring.concat(str.charAt(i));
+    }
+  }
+  return newstring;
 }
 
 /**
