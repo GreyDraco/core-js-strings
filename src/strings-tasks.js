@@ -20,7 +20,7 @@
  *   getStringLength(undefined) => 0
  */
 function getStringLength(value) {
-  if (value === null || value === undefined) return 0;
+  if (!value) return 0;
   return value.length;
 }
 
@@ -38,8 +38,11 @@ function getStringLength(value) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  if (value instanceof String) {
+    return typeof value.valueOf() === 'string';
+  }
+  return typeof value === 'string';
 }
 
 /**
